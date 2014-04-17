@@ -15,7 +15,9 @@ def split_word(word_list):
     dic = {}
     for comment in word_list:
         try:
-            comment = comment.encode("ISO-8859-1").decode("GBK").encode("utf-8")
+            print comment
+            comment = comment  # .encode("ISO-8859-1").decode("GBK").encode("utf-8")
+            print comment
         except Exception, e:
             print e, comment
             continue
@@ -92,15 +94,16 @@ def save_xlsx(dict_split):
         tail(col_, row_, ws, detail, len_dict)
         row_ = row_ + 1
     print "-----------------------------end----------------------"
+    print " ws.cell(0, 0).value", ws.cell(row=0, column=0).value
     wb.save("out.xlsx")
 
 
 def tail(col_, row_, ws, detail, len_dict):
     col_ = col_
     print detail[0]
-    ws.cell(row=row_, column=col_).value = "".join([str((detail[0]/float(len_dict))*100), "%"])
-    col_ = col_ + 1
     ws.cell(row=row_, column=col_).value = str(detail[0]) 
+    col_ = col_ + 1
+    ws.cell(row=row_, column=col_).value = "".join([str((detail[0]/float(len_dict))*100), "%"])
     col_ = col_ + 1
     for ite in detail[1]:
         ws.cell(row=row_, column=col_).value = ite[0]
