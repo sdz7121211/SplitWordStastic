@@ -17,7 +17,6 @@ def split_word(word_list):
         try:
             print comment
             comment = comment  # .encode("ISO-8859-1").decode("GBK").encode("utf-8")
-            print comment
         except Exception, e:
             print e, comment
             continue
@@ -100,7 +99,6 @@ def save_xlsx(dict_split):
 
 def tail(col_, row_, ws, detail, len_dict):
     col_ = col_
-    print detail[0]
     ws.cell(row=row_, column=col_).value = str(detail[0]) 
     col_ = col_ + 1
     ws.cell(row=row_, column=col_).value = "".join([str((detail[0]/float(len_dict))*100), "%"])
@@ -110,7 +108,6 @@ def tail(col_, row_, ws, detail, len_dict):
         col_ = col_ + 1
         ws.cell(row=row_, column=col_).value = str(ite[1])
         col_ = col_ + 1
-        print "ite", ite[0], ite[1]
 
 
 def load_stopword():
