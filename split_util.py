@@ -1,11 +1,11 @@
-#coding=utf8
-
+# coding=utf8
 from openpyxl import Workbook
 import jieba
 import random
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
+
 
 number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "g", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -34,14 +34,14 @@ def split_word(word_list):
     print "split end"
     l = sorted(dic.items(), key=lambda dic: dic[1][0])
     print "sorted end"
-    return list(reversed(l)) # [(word:[num,comment...]), ...]
+    return list(reversed(l))  # [(word:[num,comment...]), ...]
 
 
 def word_tail(split_words):
     temp = split_words          # type as:[(word:[num,comment]), ...]
     for item in temp:
         content_num = 0
-        len_item = len(item[1][1:]) # 包含该分词的评论个数
+        len_item = len(item[1][1:])  # 包含该分词的评论个数
         for comment in item[1][1:]:
             content_num = content_num + 1
             is_append = False
@@ -116,6 +116,7 @@ def load_stopword():
     for word in f:
         stopword_list.append(word)
     return stopword_list
+
 
 stopword_list = load_stopword()
 
